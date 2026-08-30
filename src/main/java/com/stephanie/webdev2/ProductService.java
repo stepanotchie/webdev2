@@ -9,10 +9,11 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ShopProperties shopProperties;
 
-    // Task 3: Constructor Injection
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, ShopProperties shopProperties) {
         this.productRepository = productRepository;
+        this.shopProperties = shopProperties;
     }
 
     public List<Product> getProductsGreaterThanPrice(double threshold) {
@@ -20,5 +21,9 @@ public class ProductService {
                 .stream()
                 .filter(product -> product.getPrice() > threshold)
                 .collect(Collectors.toList());
+    }
+
+    public ShopProperties getShopProperties() {
+        return shopProperties;
     }
 }
