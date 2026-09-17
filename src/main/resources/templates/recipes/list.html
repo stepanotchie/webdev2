@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Manager - All Recipes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #fdfaf6; color: #3a2e28; }
+        h1 { color: #8b5e3c; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; }
+        th, td { border: 1px solid #e0d5c8; padding: 10px 14px; text-align: left; }
+        th { background: #8b5e3c; color: #fff; }
+        tr:nth-child(even) { background: #faf3ec; }
+        a.button, button.button {
+            display: inline-block; padding: 6px 12px; margin-right: 6px;
+            background: #8b5e3c; color: #fff; text-decoration: none; border-radius: 4px;
+            border: none; cursor: pointer; font-size: 14px;
+        }
+        a.button.delete, button.button.delete { background: #b23a2f; }
+        .add-link { display: inline-block; margin-bottom: 16px; }
+        .empty { margin-top: 20px; color: #7a6a5d; }
+    </style>
+</head>
+<body>
+<h1>Recipe Manager</h1>
+<a class="button add-link" th:href="@{/recipes/new}">+ Add New Recipe</a>
+
+<table th:if="${!recipes.isEmpty()}">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Prep Time (min)</th>
+        <th>Servings</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.name}">Name</td>
+        <td th:text="${recipe.category}">Category</td>
+        <td th:text="${recipe.prepTimeMinutes}">0</td>
+        <td th:text="${recipe.servings}">0</td>
+        <td th:text="${recipe.description}">Description</td>
+        <td>
+            <a class="button" th:href="@{/recipes/{id}/edit(id=${recipe.id})}">Edit</a>
+            <form th:action="@{/recipes/{id}/delete(id=${recipe.id})}" method="post" style="display:inline;">
+                <button type="submit" class="button delete"
+                        onclick="return confirm('Delete this recipe?');">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<p class="empty" th:if="${recipes.isEmpty()}">No recipes yet. Add your first one!</p>
+</body>
+</html>
