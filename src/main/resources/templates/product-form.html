@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+</head>
+
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <h1>Add a New Product</h1>
+
+    <form th:action="@{/products}" th:object="${product}" method="post">
+        <table>
+            <tr>
+                <th><label for="name">Name</label></th>
+                <td>
+                    <input type="text" id="name" th:field="*{name}" />
+                    <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="price">Price</label></th>
+                <td>
+                    <input type="text" id="price" th:field="*{price}" />
+                    <span class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="categoryName">Category</label></th>
+                <td>
+                    <input type="text" id="categoryName" th:field="*{category.name}" />
+                </td>
+            </tr>
+        </table>
+
+        <button type="submit">Save Product</button>
+    </form>
+
+</body>
+
+</html>
