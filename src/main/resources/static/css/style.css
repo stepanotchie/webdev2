@@ -1,0 +1,12 @@
+body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+a { color: #0b5ed7; }
+.btn { display: inline-block; padding: .4rem .9rem; background: #0b5ed7; color: #fff; border: 0; border-radius: 4px; text-decoration: none; cursor: pointer; font-size: 1rem; }
+ul.tasks { list-style: none; padding: 0; }
+ul.tasks li { padding: .6rem 0; border-bottom: 1px solid #ddd; }
+.status { font-size: .85rem; padding: .1rem .5rem; border-radius: 10px; background: #eee; margin-left: .5rem; }
+.status.done { background: #d1e7dd; color: #0f5132; }
+.empty { padding: 1rem; background: #f8f9fa; border: 1px dashed #aaa; border-radius: 4px; }
+label { display: block; margin-top: 1rem; font-weight: 600; }
+input[type=text], textarea { width: 100%; padding: .4rem; box-sizing: border-box; font: inherit; }
+.error { color: #b00020; font-size: .9rem; margin: .25rem 0 0; }
+.error-page { text-align: center; margin-top: 3rem; }

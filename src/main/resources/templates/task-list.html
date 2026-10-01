@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+</head>
+<body>
+<h1>Tasks</h1>
+<p><a class="btn" th:href="@{/tasks/new}" href="task-form.html">+ New Task</a></p>
+
+<!-- Fallback message when the list is empty -->
+<div class="empty" th:if="${#lists.isEmpty(tasks)}">
+    No tasks yet. Create your first one!
+</div>
+
+<ul class="tasks" th:unless="${#lists.isEmpty(tasks)}">
+    <li th:each="task : ${tasks}">
+        <a th:href="@{/tasks/{id}(id=${task.id})}" th:text="${task.title}" href="task-detail.html">Sample task</a>
+        <span class="status" th:classappend="${task.completed} ? 'done'"
+              th:text="${task.completed} ? 'Completed' : 'Pending'">Pending</span>
+        <form th:action="@{/tasks/{id}/toggle(id=${task.id})}" method="post" action="#" style="display:inline">
+            <button type="submit" th:text="${task.completed} ? 'Mark as undone' : 'Mark as done'">Mark as done</button>
+        </form>
+    </li>
+</ul>
+</body>
+</html>

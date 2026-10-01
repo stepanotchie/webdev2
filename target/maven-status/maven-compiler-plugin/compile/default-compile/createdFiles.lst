@@ -1,7 +1,6 @@
-com\stephanie\webdev2\RecipeManagerApplication$RootRedirectController.class
-com\stephanie\webdev2\Recipe.class
-com\stephanie\webdev2\RecipeController.class
-com\stephanie\webdev2\RecipeManagerApplication.class
-com\stephanie\webdev2\RecipeService.class
-com\stephanie\webdev2\InMemoryRecipeRepository.class
-com\stephanie\webdev2\RecipeRepository.class
+com\stephanie\webdev2\exception\TaskNotFoundException.class
+com\stephanie\webdev2\repository\TaskRepository.class
+com\stephanie\webdev2\model\Task.class
+com\stephanie\webdev2\Webdev2Application.class
+com\stephanie\webdev2\controller\TaskController.class
+com\stephanie\webdev2\service\TaskService.class

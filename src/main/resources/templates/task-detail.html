@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Detail</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+</head>
+<body>
+<h1 th:text="${task.title}">Sample task title</h1>
+<dl>
+    <dt><strong>ID</strong></dt>
+    <dd th:text="${task.id}">1</dd>
+
+    <dt><strong>Title</strong></dt>
+    <dd th:text="${task.title}">Sample task title</dd>
+
+    <dt><strong>Description</strong></dt>
+    <dd th:if="${task.description != null and !task.description.isBlank()}"
+        th:text="${task.description}">Sample description</dd>
+    <dd th:unless="${task.description != null and !task.description.isBlank()}"><em>No description</em></dd>
+
+    <dt><strong>Completed</strong></dt>
+    <dd th:text="${task.completed} ? 'Yes' : 'No'">No</dd>
+</dl>
+<p><a th:href="@{/tasks}" href="task-list.html">&larr; Back to list</a></p>
+</body>
+</html>
