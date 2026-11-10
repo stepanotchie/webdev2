@@ -1,6 +1,0 @@
-com\stephanie\webdev2\exception\TaskNotFoundException.class
-com\stephanie\webdev2\repository\TaskRepository.class
-com\stephanie\webdev2\model\Task.class
-com\stephanie\webdev2\Webdev2Application.class
-com\stephanie\webdev2\controller\TaskController.class
-com\stephanie\webdev2\service\TaskService.class
