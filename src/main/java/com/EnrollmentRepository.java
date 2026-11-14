@@ -1,4 +1,4 @@
-package com.week9.activity;
+package com;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

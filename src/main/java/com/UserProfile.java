@@ -1,4 +1,4 @@
-package com.week9.activity;
+package com;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
