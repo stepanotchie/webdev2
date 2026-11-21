@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: ""
+
+localResources:
+  collections:
+    - ../api_tests.json
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../postman/collections/Week11 - Stephanie Mhay de Leon API: 3a996031-00cc-40c5-bb0e-495a689891ad
