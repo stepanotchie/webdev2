@@ -12,13 +12,13 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Week10SmokeRunner implements CommandLineRunner {
+public class Week11SmokeRunner implements CommandLineRunner {
 
     private final AppUserRepository appUserRepository;
     private final Environment env;
     private final HttpClient http = HttpClient.newHttpClient();
 
-    public Week10SmokeRunner(AppUserRepository appUserRepository, Environment env) {
+    public Week11SmokeRunner(AppUserRepository appUserRepository, Environment env) {
         this.appUserRepository = appUserRepository;
         this.env = env;
     }
