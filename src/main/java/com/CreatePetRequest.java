@@ -1,20 +1,31 @@
 package com;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class CreatePetRequest {
-    @NotBlank
+
+    @NotBlank(message = "Name is required")
+    @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Species is required")
+    @Size(max = 50, message = "Species must not exceed 50 characters")
     private String species;
 
-    @NotBlank
+    @NotBlank(message = "Microchip number is required")
+    @Size(max = 50, message = "Microchip number must not exceed 50 characters")
     private String microChipNumber;
 
-    @NotNull
+    @NotNull(message = "Owner id is required")
+    @Min(value = 1, message = "Owner id must be at least 1")
     private Long ownerId;
+
+    @Email(message = "Invalid email format")
+    private String contactEmail;
 
     public CreatePetRequest() {
     }
@@ -56,5 +67,13 @@ public class CreatePetRequest {
 
     public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
     }
 }
