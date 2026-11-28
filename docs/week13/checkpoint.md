@@ -18,12 +18,11 @@
  
 | Item | Version |
 |---|---|
-| JDK | 17 (set in my `pom.xml`) – _add the output of `java -version`_ |
+| JDK | 17 (set in my `pom.xml`)
 | Spring Boot | 4.1.2 |
-| MySQL | _add the output of `SELECT VERSION();`_ |
-| Browser | Chrome (incognito) – _add the version number_ |
-| Database name | `webdev2_clinic` in the instructions below. On my laptop I used `webdev2_clinic_test`, and my screenshots show that name. |
- 
+| MySQL | 26.7.0|
+| Browser | Chrome browser
+| Database name | `webdev2_clinic` in the instructions below. On my laptop I used `webdev2_clinic_test`
 ---
  
 ## 2. How I run it
