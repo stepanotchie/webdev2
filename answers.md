@@ -21,11 +21,11 @@
 
 **DTO files with annotations** :
 
-- `CreatePetRequest.java`: [src/main/java/com/CreatePetRequest.java](src/main/java/com/CreatePetRequest.java)
-- `UpdatePetRequest.java` (PUT): [src/main/java/com/UpdatePetRequest.java](src/main/java/com/UpdatePetRequest.java)
-- `PatchPetRequest.java` (PATCH): [src/main/java/com/PatchPetRequest.java](src/main/java/com/PatchPetRequest.java)
+- `CreatePetRequest.java`: [src/main/java/com/clinic/dto/request/CreatePetRequest.java](src/main/java/com/clinic/dto/request/CreatePetRequest.java)
+- `UpdatePetRequest.java` (PUT): [src/main/java/com/clinic/dto/request/UpdatePetRequest.java](src/main/java/com/clinic/dto/request/UpdatePetRequest.java)
+- `PatchPetRequest.java` (PATCH): [src/main/java/com/clinic/dto/request/PatchPetRequest.java](src/main/java/com/clinic/dto/request/PatchPetRequest.java)
 
-Constraints used: `@NotBlank`, `@Size`, `@Min`, `@NotNull` and `@Email` (on the optional `contactEmail` field). `@Valid` is applied to every `@RequestBody` in [PetController.java](src/main/java/com/PetController.java) (POST, PUT and PATCH).
+Constraints used: `@NotBlank`, `@Size`, `@Min`, `@NotNull` and `@Email` (on the optional `contactEmail` field). `@Valid` is applied to every `@RequestBody` in [PetController.java](src/main/java/com/clinic/controller/PetController.java) (POST, PUT and PATCH).
 
 **Evidence of 400 response for missing field:**
 
@@ -53,9 +53,9 @@ Constraints used: `@NotBlank`, `@Size`, `@Min`, `@NotNull` and `@Email` (on the 
 
 **Files created:**
 
-- `GlobalExceptionHandler.java`: [src/main/java/com/GlobalExceptionHandler.java](src/main/java/com/GlobalExceptionHandler.java)
-- `ErrorResponse.java`: [src/main/java/com/ErrorResponse.java](src/main/java/com/ErrorResponse.java)
-- `ResourceNotFoundException.java`: [src/main/java/com/ResourceNotFoundException.java](src/main/java/com/ResourceNotFoundException.java)
+- `GlobalExceptionHandler.java`: [src/main/java/com/clinic/exception/GlobalExceptionHandler.java](src/main/java/com/clinic/exception/GlobalExceptionHandler.java)
+- `ErrorResponse.java`: [src/main/java/com/clinic/exception/ErrorResponse.java](src/main/java/com/clinic/exception/ErrorResponse.java)
+- `ResourceNotFoundException.java`: [src/main/java/com/clinic/exception/ResourceNotFoundException.java](src/main/java/com/clinic/exception/ResourceNotFoundException.java)
 
 **Evidence — 404 response:**
 
@@ -118,7 +118,7 @@ Constraints used: `@NotBlank`, `@Size`, `@Min`, `@NotNull` and `@Email` (on the 
 
 **File created:**
 
-- `WebConfig.java`: [src/main/java/com/WebConfig.java](src/main/java/com/WebConfig.java)
+- `WebConfig.java`: [src/main/java/com/clinic/config/WebConfig.java](src/main/java/com/clinic/config/WebConfig.java)
 
 **Evidence — CORS headers present:**
 
@@ -153,9 +153,9 @@ PS> curl.exe -v -X OPTIONS http://localhost:8080/api/pets -H "Origin: http://loc
 
 **Files updated:**
 
-- Repository method added: [PetRepository.java](src/main/java/com/PetRepository.java) — `Page<Pet> findBySpeciesIgnoreCase(String species, Pageable pageable)`
-- Service method updated: [PetService.java](src/main/java/com/PetService.java) — `findAll(...)` builds the `Pageable`/`Sort` and returns `Page<PetDTO>`
-- Controller method updated: [PetController.java](src/main/java/com/PetController.java) — `GET /api/pets` with `page`, `size`, `sort`, `direction`, `species`; size capped at 100
+- Repository method added: [PetRepository.java](src/main/java/com/clinic/repository/PetRepository.java) — `Page<Pet> findBySpeciesIgnoreCase(String species, Pageable pageable)`
+- Service method updated: [PetService.java](src/main/java/com/clinic/service/PetService.java) — `findAll(...)` builds the `Pageable`/`Sort` and returns `Page<PetDTO>`
+- Controller method updated: [PetController.java](src/main/java/com/clinic/controller/PetController.java) — `GET /api/pets` with `page`, `size`, `sort`, `direction`, `species`; size capped at 100
 
 **Evidence — paginated response:**
 
@@ -294,3 +294,11 @@ Duration: 2s 146ms | Avg. response time: 21 ms
 > In 2–3 sentences: which of the five topics from Week 11 had the biggest impact on your capstone API? What surprised you most when implementing it?
 
 The topic with the biggest impact on my capstone API was global exception handling: every error (validation, not found, duplicate microchip, invalid sort field) now comes back in the same `{ status, message, timestamp, errors }` shape from one `@RestControllerAdvice` class, so a client always knows what to expect. What surprised me most was how much `@Valid` does in one request: a single invalid POST returned all six field errors at once, including two different errors on the `name` field. I also learned that PUT and PATCH need separate DTOs, because every PATCH field is optional but must still be valid when it is sent.
+
+---
+
+## Finals - Week 13 (F1)
+
+- Lecture notes: [docs/week13/lecture.md](docs/week13/lecture.md)
+- Checkpoint: [docs/week13/checkpoint.md](docs/week13/checkpoint.md)
+- Evidence: [docs/week13/evidence/](docs/week13/evidence/)

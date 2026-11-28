@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pet Clinic</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Pet Clinic</h1>
+    <p class="tagline">Patients, owners and vaccine stock</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" id="tab-pets" aria-controls="panel-pets" aria-selected="true">Pets</button>
+    <button class="tab" role="tab" id="tab-owners" aria-controls="panel-owners" aria-selected="false">Owners</button>
+    <button class="tab" role="tab" id="tab-vaccines" aria-controls="panel-vaccines" aria-selected="false">Vaccines</button>
+  </nav>
+
+  <main>
+    <!-- PETS -->
+    <section id="panel-pets" role="tabpanel" aria-labelledby="tab-pets">
+      <form id="pet-filter" class="toolbar">
+        <label>Species
+          <input id="filter-species" list="species-options" placeholder="e.g. Dog" autocomplete="off">
+          <datalist id="species-options">
+            <option value="Dog"></option>
+            <option value="Cat"></option>
+            <option value="Rabbit"></option>
+          </datalist>
+        </label>
+        <label>Sort by
+          <select id="filter-sort">
+            <option value="id">ID</option>
+            <option value="name">Name</option>
+            <option value="species">Species</option>
+            <option value="microChipNumber">Microchip</option>
+          </select>
+        </label>
+        <label>Order
+          <select id="filter-direction">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </label>
+        <button type="submit">Apply</button>
+        <button type="button" id="filter-clear" class="secondary">Clear</button>
+      </form>
+
+      <p id="pets-status" class="status" role="status" aria-live="polite" hidden></p>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Pets</caption>
+          <thead>
+            <tr><th scope="col">ID</th><th scope="col">Name</th><th scope="col">Species</th>
+                <th scope="col">Microchip</th><th scope="col">Owner ID</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr>
+          </thead>
+          <tbody id="pets-body"></tbody>
+        </table>
+      </div>
+      <div id="pets-pager" class="pager"></div>
+
+      <section class="detail" aria-labelledby="detail-heading">
+        <h2 id="detail-heading">Pet details</h2>
+        <form id="lookup-form" class="toolbar">
+          <label>Look up by ID
+            <input id="lookup-id" inputmode="numeric" placeholder="e.g. 1" autocomplete="off">
+          </label>
+          <button type="submit">Show pet</button>
+        </form>
+        <p id="detail-status" class="status" role="status" aria-live="polite" hidden></p>
+        <div id="detail-body" hidden>
+          <dl id="detail-fields" class="fields"></dl>
+          <h3>Vaccination history</h3>
+          <p id="history-status" class="status" hidden></p>
+          <div class="table-wrap">
+            <table id="history-table" hidden>
+              <thead><tr><th scope="col">Vaccine</th><th scope="col">Dose</th><th scope="col">Date given</th></tr></thead>
+              <tbody id="history-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- OWNERS -->
+    <section id="panel-owners" role="tabpanel" aria-labelledby="tab-owners" hidden>
+      <p id="owners-status" class="status" role="status" aria-live="polite" hidden></p>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Owners</caption>
+          <thead><tr><th scope="col">ID</th><th scope="col">Username</th><th scope="col">Email</th><th scope="col">Registered</th></tr></thead>
+          <tbody id="owners-body"></tbody>
+        </table>
+      </div>
+      <div id="owners-pager" class="pager"></div>
+    </section>
+
+    <!-- VACCINES -->
+    <section id="panel-vaccines" role="tabpanel" aria-labelledby="tab-vaccines" hidden>
+      <p id="vaccines-status" class="status" role="status" aria-live="polite" hidden></p>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Vaccines</caption>
+          <thead><tr><th scope="col">ID</th><th scope="col">Vaccine</th><th scope="col">Doses in stock</th></tr></thead>
+          <tbody id="vaccines-body"></tbody>
+        </table>
+      </div>
+      <div id="vaccines-pager" class="pager"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span id="api-info"></span></footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

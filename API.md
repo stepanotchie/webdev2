@@ -27,7 +27,7 @@ Every error (400, 404, 405, 409, 500) uses the same shape:
  
 ## CORS
  
-All `/api/**` endpoints accept cross-origin requests from `http://localhost:3000` (methods `GET, POST, PUT, PATCH, DELETE, OPTIONS`, all headers, credentials allowed).
+All `/api/**` endpoints accept cross-origin requests only from the origins listed in the `app.cors.allowed-origins` property (environment variable `CORS_ALLOWED_ORIGINS`, default `http://localhost:3000`). Methods `GET, POST, PUT, PATCH, DELETE, OPTIONS`, all headers, credentials allowed. The bundled frontend is served by Spring Boot from the same origin as the API, so it needs no CORS entry.
  
 ## Pet Object (`PetDTO`)
  
@@ -321,4 +321,30 @@ curl -i -X DELETE http://localhost:8080/api/pets/7
 ```
 HTTP/1.1 204
 ```
- 
+
+---
+
+# Week 13 (F1) additions
+
+## Contract table (read endpoints used by the frontend)
+
+| Method & path | Query params | Success (200) | Errors |
+|---|---|---|---|
+| `GET /api/pets` | `page`, `size`, `sort`, `direction`, `species` | Page of `PetDTO` (`content[]`) | 400 invalid sort/direction/type |
+| `GET /api/pets/{id}` | - | `PetDTO` | 400 non-numeric id, 404 |
+| `GET /api/pets/{petId}/vaccinations` | - | JSON array of `VaccinationRecordDTO` (empty array if none) | 404 unknown pet |
+| `GET /api/owners` | `page`, `size` (max 100) | Page of `OwnerDTO`, sorted by username | 400 non-numeric param |
+| `GET /api/owners/{id}` | - | `OwnerDTO` | 400, 404 |
+| `GET /api/vaccines` | `page`, `size` (max 100) | Page of `VaccineDTO`, sorted by name | 400 non-numeric param |
+| `GET /api/vaccines/{id}` | - | `VaccineDTO` | 400, 404 |
+
+All errors use the standard `ErrorResponse` shape described above. A list with no matching records is `200` with `"content": []`, never 404.
+
+## `OwnerDTO`
+`{ "id": 1, "username": "maria.santos", "email": "maria.santos@example.com", "createdAt": "2026-11-25" }`
+
+## `VaccineDTO`
+`{ "id": 1, "name": "Rabies", "stockDoses": 25 }`
+
+## `VaccinationRecordDTO`
+`{ "id": 1, "petId": 1, "vaccineId": 1, "vaccineName": "Rabies", "dateGiven": "2026-01-10", "doseNumber": 1 }`

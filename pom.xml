@@ -8,11 +8,11 @@
 		<version>4.1.2</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.week7</groupId>
-	<artifactId>taskmanager</artifactId>
+	<groupId>com.clinic</groupId>
+	<artifactId>clinic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>taskmanager</name>
-	<description>WEBDEV2 Lab 7 - Spring Boot + MySQL (Stephanie Mhay D. De Leon)</description>
+	<name>clinic</name>
+	<description>Pet Clinic - WEBDEV2 final project (vanilla JS + Spring Boot + MySQL)</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

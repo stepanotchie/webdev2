@@ -4,7 +4,7 @@ workspace:
 
 localResources:
   collections:
-    - ../api_tests.json
+    - ../docs/api/pet-clinic.postman_collection.json
 
 # Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
 
