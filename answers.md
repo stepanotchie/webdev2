@@ -45,7 +45,6 @@ Constraints used: `@NotBlank`, `@Size`, `@Min`, `@NotNull` and `@Email` (on the 
 }
 ```
 
-![POST with missing name returns 400](screenshots/task1_post_missing_field_400.png)
 
 ---
 
@@ -70,7 +69,6 @@ Constraints used: `@NotBlank`, `@Size`, `@Min`, `@NotNull` and `@Email` (on the 
 }
 ```
 
-![GET non-existent pet returns 404](screenshots/task2_get_not_found_404.png)
 
 **Evidence — 400 response with field errors:**
 
@@ -110,8 +108,6 @@ Constraints used: `@NotBlank`, `@Size`, `@Min`, `@NotNull` and `@Email` (on the 
 }
 ```
 
-![POST with invalid body returns 400 with errors array](screenshots/task2_post_invalid_body_400.png)
-
 ---
 
 ## Task 3 — CORS Configuration
@@ -144,9 +140,6 @@ PS> curl.exe -v -X OPTIONS http://localhost:8080/api/pets -H "Origin: http://loc
 < Content-Length: 0
 < Date: Sat, 21 Nov 2026 06:30:34 GMT
 ```
-
-![curl OPTIONS shows Access-Control-Allow-Origin](screenshots/task3_cors_curl_output.png)
-
 ---
 
 ## Task 4 — Pagination and Filtering
@@ -192,9 +185,6 @@ PS> curl.exe -v -X OPTIONS http://localhost:8080/api/pets -H "Origin: http://loc
 
 The `content` array is sorted alphabetically by `name` (Bella, Buddy, Luna, Max, Milo).
 
-![Paginated content sorted by name](screenshots/task4_pagination_content.png)
-![Paginated metadata: size 5, totalElements 6, totalPages 2](screenshots/task4_pagination_sorted.png)
-
 **Evidence — filtered response:**
 
 > Response for `GET http://localhost:8080/api/pets?species=Dog` — every pet in `content` has `"species": "Dog"`:
@@ -226,9 +216,6 @@ The `content` array is sorted alphabetically by `name` (Bella, Buddy, Luna, Max,
 }
 ```
 
-![Filtered content: only Dogs](screenshots/task4_filter_species_content.png)
-![Filtered metadata: totalElements 3](screenshots/task4_filter_species.png)
-
 **Evidence — max size cap:**
 
 > What response did you get when you requested `?size=999`? What was the actual page size in the metadata?
@@ -242,8 +229,6 @@ The `content` array is sorted alphabetically by `name` (Bella, Buddy, Luna, Max,
 "totalElements": 6,
 "totalPages": 1
 ```
-
-![size=999 is capped to 100](screenshots/task4_size_cap_100.png)
 
 ---
 
@@ -263,10 +248,6 @@ The `content` array is sorted alphabetically by `name` (Bella, Buddy, Luna, Max,
 Duration: 2s 146ms | Avg. response time: 21 ms
 ```
 
-![Runner summary: 14 requests, 30 of 30 tests passed](screenshots/task5_runner_summary.png)
-![Runner results: requests 1 to 5](screenshots/task5_runner_requests_1_to_5.png)
-![Runner results: requests 6 to 10](screenshots/task5_runner_requests_6_to_10.png)
-![Runner results: requests 11 to 14](screenshots/task5_runner_requests_11_to_14.png)
 
 **List the requests in your collection:**
 
